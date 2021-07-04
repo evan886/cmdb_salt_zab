@@ -2,6 +2,7 @@
 zabbix-api
 https://github.com/kurolz/DjangoWeb
 
+这个是我cp别人学习zabbix-api django的 
 
 # DjangoWeb
 Background based on Django！
