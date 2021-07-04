@@ -1,0 +1,60 @@
+#install py3.6
+wget -c https://mirrors.huaweicloud.com/python/3.6.0/Python-3.6.0.tar.xz
+   tar xvf Python-3.6.0.tar.xz 
+   cd Python-3.6.0/
+   ./configure --prefix=/usr/local/python3.6
+   make  -j7
+   sudo make install 
+sudo ln -s /usr/local/python3.6/bin/python3.6 /usr/bin/python3.6
+
+#开始配置
+virtualenv -p /usr/bin/python3.6 venv 
+ source  venv/bin/activate
+
+python3.6 -m pip install -i https://mirrors.aliyun.com/pypi/simple    -r requirements.txt
+ python3.6  -m pip install pymysql
+
+python -m django --version
+1.9.5
+
+
+#改一下配置文件了创建库
+geany DjangoWeb/settings.py 
+
+ python3.6 manage.py makemigrations 
+ 1432  python3.6 manage.py migrate
+
+python3.6  manage.py createsuperuser
+
+ python3.6 manage.py  runserver 
+ 1425  python3.6 manage.py  runserver 
+
+
+http://127.0.0.1:8000/webserver/
+admin evan2240881
+
+
+zabbix api 相关的用户什么的要改
+
+DjangoWeb.wsgi.application
+
+
+
+
+
+
+
+
+
+
+
+
+ModuleNotFoundError: No module named 'pymysql'
+(venv) evan@myxps:~/tmp/DjangoWeb$python3.6  pip3 install pymysql
+
+python3.6  -m pip install pymysql
+ python3.6 -m pip install -i https://mirrors.aliyun.com/pypi/simple    -r requirements.txt
+
+sudo apt-get install python3-pymysql
+
+pip   install -i https://mirrors.aliyun.com/pypi/simple    -r requirements.txt

@@ -1,0 +1,43 @@
+
+zabbix api 展示
+author
+
+
+
+https://blog.csdn.net/qq_28513801/article/details/100828148
+
+我做的运维平台的监控原理大致是这样一个过程：
+
+    首先，zabbix部署了一个名为Linux Server的主机组，该主机组下面部署了3台linux主机，每台linux主机下面各设置了大约50各监控项。
+    我在后端调用zabbix的API接口，由主机组---------> 主机---------> 监控项---------> 获取数据，最后将获取的数据返回到前台。
+    后端获取的数据，在后端使用dataHandle(),去搜集数据（这里是json格式的），并且存为一个字典，然后在去遍历，并返回给前台。
+
+json.dumps 用于将 Python 对象编码成 JSON 字符串。
+
+
+
+
+def dataHandle(*args,**kw):
+    '''
+    数据处理返回结果 hereevan
+    '''
+    login_zabbix_relist = loginZabbix()
+    zabbix_url = login_zabbix_relist[0]
+    session = login_zabbix_relist[1]
+    if len(kw.keys()) == 1:
+        data = kw["func"](session=session)
+    else:
+            data = kw["func"](session=session,parameter=kw["hostid"])
+    value = data.encode('utf-8')
+    host_request = urllib.request.Request(zabbix_url, value)
+    host_request.add_header('Content-Type', 'application/json')
+    response = urllib.request.urlopen(host_request)
+    result = json.loads(response.read())
+    return result['result']
+
+
+————————————————
+版权声明：本文为CSDN博主「抛物线.」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_28513801/article/details/100828148
+
+
