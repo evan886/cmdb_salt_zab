@@ -3,6 +3,9 @@ zabbix-api
 https://github.com/kurolz/DjangoWeb
 
 这个是我cp别人学习zabbix-api django的 
+install 
+虚拟环境加安装就行 这个原作者是个学生 可能当时技术不太好 容器的很多写错的
+
 
 # DjangoWeb
 Background based on Django！
